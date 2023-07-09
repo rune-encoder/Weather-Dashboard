@@ -52,19 +52,25 @@
             <input id="clearBtn" class="my-2" type="button" value="Clear" />
           </form>
 
-          <section id='history' class="d-flex flex-column border border-warning border-3">
+          <section
+            id="history"
+            class="d-flex flex-column border border-warning border-3"
+          >
             <!-- JavaScript Appended User's History -->
           </section>
         </div>
 
-        <aside class="col-8 border border-success border-4">
+        <aside id = 'all-weather' class="col-8 border border-success border-4">
           <div id="weather-container" class="border border-info border-3">
             <!-- JavaScript Appended City's Current Weather Goes Here -->
           </div>
-          <h3>5-Day Forecast:</h3>
+
+          <h3 id="weather-board"></h3>
+
           <div
             id="forecast-container"
-            class="d-flex flex-wrap justify-content-around border border-info border-3">
+            class="d-flex flex-wrap justify-content-around border border-info border-3"
+          >
             <!-- JavaScript Appended 5-Day Forecast Goes Here -->
           </div>
         </aside>
