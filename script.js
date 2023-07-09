@@ -7,6 +7,7 @@ var countryCode = "3166-2:UM";
 var currentDate = new Date();
 // var units = metric/imperial
 
+var weatherContainer = document.getElementById("weather-container");
 var fiveDayContainer = document.getElementById("forecast-container");
 
 var geoCodeUrl =
@@ -21,7 +22,7 @@ var geoCodeUrl =
 
 function getWeather(lat, lon) {
   var weatherUrl =
-    "https://api.openweathermap.org/data/2.5/forecast?lat=" +
+    "https://api.openweathermap.org/data/2.5/weather?lat=" +
     lat +
     "&lon=" +
     lon +
@@ -31,23 +32,65 @@ function getWeather(lat, lon) {
 
   fetch(weatherUrl)
     .then(function (response) {
-      //   console.log(response);
+      return response.json();
+    })
+    .then(function (data) {
+      var cityName = data.name;
+      var currentWeatherDate = '(' + new Date().toLocaleString("default", {
+        month: "2-digit",
+        day: "2-digit",
+        year: "numeric",
+      }) + ')';
+      var weatherDesc = data.weather[0].description;
+    //   var weatherIcon = data.weather[0].icon;
+      var weatherTemp = "Temp: " + data.main.temp + " °F";
+      var weatherWind = "Wind: " + data.wind.speed + " MPH";
+      var weatherHumidity = "Humidity: " + data.main.humidity + " %";
+
+      weatherContainer.innerHTML =
+      "<h5>" +
+      cityName + 
+      " " +
+      currentWeatherDate +
+      "</h5>" +
+      "<p>" +
+      weatherDesc +
+      "<br>" +
+      weatherTemp +
+      "<br>" +
+      weatherWind +
+      "<br>" +
+      weatherHumidity +
+      "</p>";
+    });
+
+  var forecastUrl =
+    "https://api.openweathermap.org/data/2.5/forecast?lat=" +
+    lat +
+    "&lon=" +
+    lon +
+    "&appid=" +
+    weatherKey +
+    "&units=imperial";
+
+  fetch(forecastUrl)
+    .then(function (response) {
       return response.json();
     })
     .then(function (data) {
       for (var i = 0; i <= 32; i += 8) {
-        var weatherDateRaw = data.list[i].dt_txt;
-        var weatherDate = new Date(weatherDateRaw).toLocaleString("default", {
+        var forecastDateRaw = data.list[i].dt_txt;
+        var forecastDate = new Date(forecastDateRaw).toLocaleString("default", {
           month: "2-digit",
           day: "2-digit",
           year: "numeric",
         });
 
-        var weatherDesc = data.list[i].weather[0].description;
-        // var weatherIcon = data.list[i].weather[0].icon;
-        var temp = "Temp: " + data.list[i].main.temp + " °F";
-        var wind = "Wind: " + data.list[i].wind.speed + " MPH";
-        var humidity = "Humidity: " + data.list[i].main.humidity + " %";
+        var forecastDesc = data.list[i].weather[0].description;
+        // var forecastIcon = data.list[i].weather[0].icon;
+        var forecastTemp = "Temp: " + data.list[i].main.temp + " °F";
+        var forecastWind = "Wind: " + data.list[i].wind.speed + " MPH";
+        var forecastHumidity = "Humidity: " + data.list[i].main.humidity + " %";
 
         var fiveDayEl = document.createElement("div");
         fiveDayEl.setAttribute(
@@ -58,16 +101,16 @@ function getWeather(lat, lon) {
         fiveDayContainer.appendChild(fiveDayEl);
         fiveDayEl.innerHTML =
           "<h5>" +
-          weatherDate +
+          forecastDate +
           "</h5>" +
           "<p>" +
-          weatherDesc +
+          forecastDesc +
           "<br>" +
-          temp +
+          forecastTemp +
           "<br>" +
-          wind +
+          forecastWind +
           "<br>" +
-          humidity +
+          forecastHumidity +
           "</p>";
       }
     });
@@ -76,13 +119,9 @@ function getWeather(lat, lon) {
 function getGeoCode() {
   fetch(geoCodeUrl)
     .then(function (response) {
-      //   console.log(response);
-
       return response.json();
     })
     .then(function (data) {
-      //   console.log(data);
-
       var lat = data[0].lat;
       var lon = data[0].lon;
       getWeather(lat, lon);
