@@ -6,7 +6,7 @@ var currentDate = new Date();
 var weatherContainer = document.getElementById("weather-container");
 var fiveDayContainer = document.getElementById("forecast-container");
 var inputEl = document.getElementById("cityname");
-var searchBtn = document.getElementById("search");
+var searchBtn = document.getElementById("searchBtn");
 
 function getWeather(lat, lon) {
   var weatherUrl =
@@ -128,12 +128,16 @@ function getGeoCode(cityName) {
 function userInput() {
   var cityName = inputEl.value.trim();
   inputEl.value = " ";
-  console.log(cityName);
   getGeoCode(cityName);
 }
 
 function init() {
-  searchBtn.addEventListener("click", userInput);
+  searchBtn.addEventListener("click", function () {
+    if (fiveDayContainer.children.length > 0) {
+      fiveDayContainer.innerHTML = null;
+    }
+    userInput();
+  });
 }
 
 init();
