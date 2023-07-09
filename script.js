@@ -3,6 +3,8 @@ var weatherKey = "db8b1a978a68300e354b8be192722d9d";
 var currentDate = new Date();
 // var units = metric/imperial
 
+var allWeatherData = document.getElementById("all-weather");
+var weatherBoard = document.getElementById("weather-board");
 var weatherContainer = document.getElementById("weather-container");
 var fiveDayContainer = document.getElementById("forecast-container");
 var inputEl = document.getElementById("cityname");
@@ -12,7 +14,6 @@ var historyEl = document.getElementById("history");
 var saveHistoryData = [];
 
 var storedHistoryData = JSON.parse(localStorage.getItem("saveHistoryData"));
-// function getHistory()
 
 function renderCityHistory() {
   for (var i = 0; i < saveHistoryData.length; i++) {
@@ -34,16 +35,15 @@ function saveHistory(lat, lon, cityName) {
   };
 
   if (saveHistoryData !== undefined) {
-  for (i = 0; i < saveHistoryData.length; i++) {
-    if (saveHistoryData[i].city.includes(cityData.city) === true) {
-      var duplicateCity = true;
-      break;
-    } else {
-      var duplicateCity = false;
+    for (i = 0; i < saveHistoryData.length; i++) {
+      if (saveHistoryData[i].city.includes(cityData.city) === true) {
+        var duplicateCity = true;
+        break;
+      } else {
+        var duplicateCity = false;
+      }
     }
   }
-  }
-console.log(duplicateCity);
 
   if (duplicateCity === false || duplicateCity === undefined) {
     saveHistoryData.push(cityData);
@@ -118,6 +118,8 @@ function getWeather(lat, lon) {
       return response.json();
     })
     .then(function (data) {
+      weatherBoard.textContent = "5-Day Forecast: ";
+
       for (var i = 0; i <= 32; i += 8) {
         var forecastDateRaw = data.list[i].dt_txt;
         var forecastDate = new Date(forecastDateRaw).toLocaleString("default", {
@@ -184,14 +186,15 @@ function init() {
   if (storedHistoryData !== null) {
     saveHistoryData = storedHistoryData;
     renderCityHistory();
-    historyEl.addEventListener("click", function (event) {
-      historyEl.innerHTML = null;
-      fiveDayContainer.innerHTML = null;
-      var historyLat = event.target.dataset.lat;
-      var historyLon = event.target.dataset.lon;
-      getWeather(historyLat, historyLon);
-    });
   }
+
+  historyEl.addEventListener("click", function (event) {
+    historyEl.innerHTML = null;
+    fiveDayContainer.innerHTML = null;
+    var historyLat = event.target.dataset.lat;
+    var historyLon = event.target.dataset.lon;
+    getWeather(historyLat, historyLon);
+  });
 
   searchBtn.addEventListener("click", function () {
     if (historyEl.children.length > 0) {
@@ -201,6 +204,16 @@ function init() {
       fiveDayContainer.innerHTML = null;
     }
     userInput();
+  });
+
+  clearBtn.addEventListener("click", function () {
+    localStorage.clear();
+    inputEl.value = null;
+    historyEl.innerHTML = null;
+    weatherBoard.innerHTML = null;
+    weatherContainer.innerHTML = null;
+    fiveDayContainer.innerHTML = null;
+    saveHistoryData = [];
   });
 }
 
