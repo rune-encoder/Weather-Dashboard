@@ -40,10 +40,10 @@
     <main class="container">
       <div class="row">
         <div class="col-4 border border-danger border-4">
-          <form class="border border-info border-3">
-            <h2>Search for City:</h2>
-            <input type="text" id="cityname" placeholder="City Name" /><br />
-            <input type="submit" />
+          <form class="border border-info border-3 d-flex flex-column">
+            <h5 class="my-1">Search for City:</h5>
+            <input id="cityname" class="my-2" type="text" placeholder="City Name" />
+            <input id="search" class="my-2" type="button" value="Search"/>
           </form>
 
           <section class="border border-warning border-3">
@@ -55,8 +55,8 @@
           <div id="weather-container" class="border border-info border-3">
             <!-- JavaScript Appended City's Current Weather Goes Here -->
           </div>
-          <div id="forecast-container" class="border border-info border-3">
-            <h3>5-Day Forecast:</h3>
+          <h3>5-Day Forecast:</h3>
+          <div id="forecast-container" class="d-flex flex-wrap justify-content-around border border-info border-3">
             <!-- JavaScript Appended 5-Day Forecast Goes Here -->
           </div>
         </aside>

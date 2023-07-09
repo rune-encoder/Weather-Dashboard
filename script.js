@@ -1,24 +1,12 @@
 var weatherKey = "db8b1a978a68300e354b8be192722d9d";
 
-var cityName = "San Antonio";
-var stateCode = "TX";
-var countryCode = "3166-2:UM";
-
 var currentDate = new Date();
 // var units = metric/imperial
 
 var weatherContainer = document.getElementById("weather-container");
 var fiveDayContainer = document.getElementById("forecast-container");
-
-var geoCodeUrl =
-  "http://api.openweathermap.org/geo/1.0/direct?q=" +
-  cityName +
-  "," +
-  stateCode +
-  "," +
-  countryCode +
-  "&limit=5&appid=" +
-  weatherKey;
+var inputEl = document.getElementById("cityname");
+var searchBtn = document.getElementById("search");
 
 function getWeather(lat, lon) {
   var weatherUrl =
@@ -36,32 +24,35 @@ function getWeather(lat, lon) {
     })
     .then(function (data) {
       var cityName = data.name;
-      var currentWeatherDate = '(' + new Date().toLocaleString("default", {
-        month: "2-digit",
-        day: "2-digit",
-        year: "numeric",
-      }) + ')';
+      var currentWeatherDate =
+        "(" +
+        new Date().toLocaleString("default", {
+          month: "2-digit",
+          day: "2-digit",
+          year: "numeric",
+        }) +
+        ")";
       var weatherDesc = data.weather[0].description;
-    //   var weatherIcon = data.weather[0].icon;
+      //   var weatherIcon = data.weather[0].icon;
       var weatherTemp = "Temp: " + data.main.temp + " °F";
       var weatherWind = "Wind: " + data.wind.speed + " MPH";
       var weatherHumidity = "Humidity: " + data.main.humidity + " %";
 
       weatherContainer.innerHTML =
-      "<h5>" +
-      cityName + 
-      " " +
-      currentWeatherDate +
-      "</h5>" +
-      "<p>" +
-      weatherDesc +
-      "<br>" +
-      weatherTemp +
-      "<br>" +
-      weatherWind +
-      "<br>" +
-      weatherHumidity +
-      "</p>";
+        "<h5>" +
+        cityName +
+        " " +
+        currentWeatherDate +
+        "</h5>" +
+        "<p>" +
+        weatherDesc +
+        "<br>" +
+        weatherTemp +
+        "<br>" +
+        weatherWind +
+        "<br>" +
+        weatherHumidity +
+        "</p>";
     });
 
   var forecastUrl =
@@ -116,7 +107,13 @@ function getWeather(lat, lon) {
     });
 }
 
-function getGeoCode() {
+function getGeoCode(cityName) {
+  var geoCodeUrl =
+    "http://api.openweathermap.org/geo/1.0/direct?q=" +
+    cityName +
+    "&limit=5&appid=" +
+    weatherKey;
+
   fetch(geoCodeUrl)
     .then(function (response) {
       return response.json();
@@ -128,4 +125,15 @@ function getGeoCode() {
     });
 }
 
-getGeoCode();
+function userInput() {
+  var cityName = inputEl.value.trim();
+  inputEl.value = " ";
+  console.log(cityName);
+  getGeoCode(cityName);
+}
+
+function init() {
+  searchBtn.addEventListener("click", userInput);
+}
+
+init();
