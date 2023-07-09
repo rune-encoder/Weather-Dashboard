@@ -42,13 +42,18 @@
         <div class="col-4 border border-danger border-4">
           <form class="border border-info border-3 d-flex flex-column">
             <h5 class="my-1">Search for City:</h5>
-            <input id="cityname" class="my-2" type="text" placeholder="City Name" />
-            <input id="searchBtn" class="my-2" type="button" value="Search"/>
-            <input id="clearBtn" class="my-2" type="button" value="Clear"/>
+            <input
+              id="cityname"
+              class="my-2"
+              type="text"
+              placeholder="City Name"
+            />
+            <input id="searchBtn" class="my-2" type="button" value="Search" />
+            <input id="clearBtn" class="my-2" type="button" value="Clear" />
           </form>
 
-          <section class="border border-warning border-3">
-            <h3>Render City List Here</h3>
+          <section id='history' class="d-flex flex-column border border-warning border-3">
+            <!-- JavaScript Appended User's History -->
           </section>
         </div>
 
@@ -57,7 +62,9 @@
             <!-- JavaScript Appended City's Current Weather Goes Here -->
           </div>
           <h3>5-Day Forecast:</h3>
-          <div id="forecast-container" class="d-flex flex-wrap justify-content-around border border-info border-3">
+          <div
+            id="forecast-container"
+            class="d-flex flex-wrap justify-content-around border border-info border-3">
             <!-- JavaScript Appended 5-Day Forecast Goes Here -->
           </div>
         </aside>
