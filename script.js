@@ -233,7 +233,7 @@ function getWeather(lat, lon) {
 function getGeoCode(cityName) {
   // API Url to get Lat and Lon coordinates.
   var geoCodeUrl =
-    "http://api.openweathermap.org/geo/1.0/direct?q=" +
+    "https://api.openweathermap.org/geo/1.0/direct?q=" +
     cityName +
     "&limit=5&appid=" +
     weatherKey;
