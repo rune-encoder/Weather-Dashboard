@@ -1,11 +1,148 @@
+body {
+  color: whitesmoke;
+  background: #9b6f5f;
+  background: linear-gradient(to left, #00223e, #9b6f5f);
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Ysabeau SC', sans-serif;
+}
+
+p {
+    font-family: 'Sofia Sans Condensed', sans-serif;
+    font-size: 115%;
+    color: #ffffff;
+    font-variant: small-caps;
+}
+
+.subheader {
+    color: #fdb094;
+    font-size: 130%;
+}
+
 .hide {
-   display: none; 
+  display: none;
 }
 
 .imgsize {
-    background-color: blue;
-    width: 5em;
-    height: auto;
-    border-radius: 50%;
-    z-index: -1;
+  width: 3.5em;
+  height: auto;
+  border-radius: 50%;
+}
+
+.custom-bg {
+  background: #606c88;
+  background: linear-gradient(to right, #3f4c6b, #606c88);
+}
+
+#cityname {
+  background: #4c5052;
+  background: linear-gradient(to right, #414345, #4c5052);
+  color: white;
+  border: none;
+  outline: none;
+}
+
+#search-style {
+  background-image: url(./assets/search-bg.png),
+    linear-gradient(to right, #29323c, #485563);
+  background-repeat: none;
+  background-size: cover;
+  background-blend-mode: exclusion;
+}
+
+.frost {
+  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+}
+#all-weather {
+  background-image: url(./assets/weather-bg.png),
+    linear-gradient(to right, #29323c, #485563);
+  background-repeat: none;
+  background-size: cover;
+  background-blend-mode: exclusion;
+  backdrop-filter: blur(10px);
+}
+
+#weather-container {
+  margin: 20px;
+  font-size: 140%;
+}
+
+.five-day {
+  margin: 15px 6px;
+  padding: 11px;
+  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+}
+
+.historyBtn {
+  margin: 4px 0;
+  padding: 4px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+  outline: 0.1px solid;
+  background-color: #ffffff00;
+}
+
+.historyBtn:hover {
+  background: #d4ddee;
+  background: linear-gradient(to right, #c9d7eb, #d4ddee);
+  opacity: 100%;
+  border: 0.5px solid #3f4c6b;
+  outline-color: #606c88;
+  outline-style: initial;
+  outline-offset: 12px;
+  outline-width: 10px;
+  color: #606c88;
+}
+
+.historyBtn:active {
+  background: #606c88;
+  background: linear-gradient(to right, #3f4c6b, #606c88);
+  opacity: 85%;
+  color: #ffffff;
+}
+
+.btn {
+  margin: 0;
+  padding: 4px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+  outline: 0.1px solid;
+}
+
+.btn:hover {
+  background: #d4ddee;
+  background: linear-gradient(to right, #c9d7eb, #d4ddee);
+  opacity: 100%;
+  border: 0.5px solid #3f4c6b;
+  outline-color: #606c88;
+  outline-style: initial;
+  outline-offset: 12px;
+  outline-width: 10px;
+  color: #606c88;
+}
+
+.btn:active {
+  background: #606c88;
+  background: linear-gradient(to right, #3f4c6b, #606c88);
+  opacity: 85%;
+  color: #ffffff;
 }
