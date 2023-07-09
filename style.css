@@ -7,29 +7,24 @@ body {
 h1,
 h2,
 h3 {
-    font-family: 'Ysabeau SC', sans-serif;
+  font-family: "Ysabeau SC", sans-serif;
 }
 
 p {
-    font-family: 'Sofia Sans Condensed', sans-serif;
-    font-size: 115%;
-    color: #ffffff;
-    font-variant: small-caps;
+  font-family: "Sofia Sans Condensed", sans-serif;
+  font-size: 115%;
+  color: #ffffff;
+  font-variant: small-caps;
 }
 
 .subheader {
-    color: #fdb094;
-    font-size: 130%;
-}
-
-.hide {
-  display: none;
+  color: #fdb094;
+  font-size: 130%;
 }
 
 .imgsize {
   width: 3.5em;
   height: auto;
-  border-radius: 50%;
 }
 
 .custom-bg {
@@ -38,9 +33,10 @@ p {
 }
 
 #cityname {
+  font-family: "Sofia Sans Condensed", sans-serif;
   background: #4c5052;
   background: linear-gradient(to right, #414345, #4c5052);
-  color: white;
+  color: #fdb094;
   border: none;
   outline: none;
 }
@@ -64,7 +60,6 @@ p {
   background-repeat: none;
   background-size: cover;
   background-blend-mode: exclusion;
-  backdrop-filter: blur(10px);
 }
 
 #weather-container {
