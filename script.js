@@ -7,6 +7,21 @@ var weatherContainer = document.getElementById("weather-container");
 var fiveDayContainer = document.getElementById("forecast-container");
 var inputEl = document.getElementById("cityname");
 var searchBtn = document.getElementById("searchBtn");
+var saveHistoryData = [];
+
+var storedHistoryData = JSON.parse(localStorage.getItem("saveHistoryData"));
+// function getHistory()
+
+function saveHistory(lat, lon, cityName) {
+  var cityData = {
+    city: cityName,
+    lat: lat,
+    lon: lon,
+  };
+
+  saveHistoryData.push(cityData);
+  localStorage.setItem("saveHistoryData", JSON.stringify(saveHistoryData));
+}
 
 function getWeather(lat, lon) {
   var weatherUrl =
@@ -53,6 +68,8 @@ function getWeather(lat, lon) {
         "<br>" +
         weatherHumidity +
         "</p>";
+
+      saveHistory(lat, lon, cityName);
     });
 
   var forecastUrl =
@@ -132,7 +149,13 @@ function userInput() {
 }
 
 function init() {
+
+  if (storedHistoryData !== null) {
+    saveHistoryData = storedHistoryData;
+  }
+
   searchBtn.addEventListener("click", function () {
+    console.log(saveHistoryData);
     if (fiveDayContainer.children.length > 0) {
       fiveDayContainer.innerHTML = null;
     }
