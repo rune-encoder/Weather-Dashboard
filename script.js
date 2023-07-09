@@ -1,6 +1,13 @@
 var weatherKey = "db8b1a978a68300e354b8be192722d9d";
 
-// var currentDate = new Date();
+var currentDate = new Date().toLocaleString("default", {
+  month: "2-digit",
+  day: "2-digit",
+  year: "numeric",
+  hour: '2-digit',
+  minute:'2-digit'
+});
+
 // var units = metric/imperial
 
 // Create Variables for Element ID representing our Weather Display.
@@ -13,6 +20,7 @@ var inputEl = document.getElementById("cityname");
 var searchBtn = document.getElementById("searchBtn");
 var clearBtn = document.getElementById("clearBtn");
 var historyBtn = document.getElementsByClassName("historyBtn");
+var dateEl = document.getElementById("currentDate");
 
 // Create Variable for our City History Container
 var historyEl = document.getElementById("history");
@@ -151,7 +159,7 @@ function getWeather(lat, lon) {
       saveHistory(lat, lon, cityName);
     });
 
-       // API URL to get 5-Day Forecast 
+  // API URL to get 5-Day Forecast
   var forecastUrl =
     "https://api.openweathermap.org/data/2.5/forecast?lat=" +
     lat +
@@ -161,13 +169,13 @@ function getWeather(lat, lon) {
     weatherKey +
     "&units=imperial";
 
-     // Obtains data from the 5-Day Forecast API
+  // Obtains data from the 5-Day Forecast API
   fetch(forecastUrl)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-        // Adds our header for the 5-Day Forecast
+      // Adds our header for the 5-Day Forecast
       weatherBoard.textContent = "5-Day Forecast: ";
 
       // Goes through and creates 5 cards for our Forecast.
@@ -180,9 +188,9 @@ function getWeather(lat, lon) {
           day: "2-digit",
           year: "numeric",
         });
-      // Obtain Forecast Description.
+        // Obtain Forecast Description.
         var forecastDesc = data.list[i].weather[0].description;
-              // Obtain Forecast Status Icon.
+        // Obtain Forecast Status Icon.
         var forecastIcon =
           "https://openweathermap.org/img/wn/" +
           data.list[i].weather[0].icon +
@@ -197,10 +205,7 @@ function getWeather(lat, lon) {
         // Create Container that will hold our 5-Day Forecast.
         var fiveDayEl = document.createElement("div");
         // Sets Class for the 5-Day Forecast Container.
-        fiveDayEl.setAttribute(
-          "class",
-          "five-day border border-primary border-1"
-        );
+        fiveDayEl.setAttribute("class", "five-day rounded");
 
         // Appends Forecast Data to the webpage.
         fiveDayContainer.appendChild(fiveDayEl);
@@ -259,6 +264,7 @@ function userInput() {
 
 // Initialize: First function to start.
 function init() {
+    dateEl.textContent = currentDate;
   // If data is present in local storage update our saved data.
   if (storedHistoryData !== null) {
     saveHistoryData = storedHistoryData;
