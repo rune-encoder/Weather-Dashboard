@@ -1,25 +1,34 @@
 body {
   color: whitesmoke;
-  background: #9b6f5f;
-  background: linear-gradient(to left, #00223e, #9b6f5f);
+  background: #7F7FD5;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #609BA6, #9F6B7D, #609BA6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
 }
 
 h1,
+h5 {
+  font-family: "Ysabeau SC", sans-serif;
+
+}
+
 h2,
 h3 {
-  font-family: "Ysabeau SC", sans-serif;
+  font-family: 'Ysabeau Infant', sans-serif;
+
 }
 
 p {
-  font-family: "Sofia Sans Condensed", sans-serif;
+  font-family: 'Ysabeau Office', sans-serif;
   font-size: 115%;
   color: #ffffff;
   font-variant: small-caps;
 }
 
 .subheader {
-  color: #fdb094;
+  color: #ffffff;
   font-size: 130%;
+  box-shadow: 0px 1px 30px 1px #00000052;
 }
 
 .imgsize {
@@ -28,15 +37,24 @@ p {
 }
 
 .custom-bg {
-  background: #606c88;
-  background: linear-gradient(to right, #3f4c6b, #606c88);
+  background-image: url(./assets/weather-bg.png), linear-gradient(to right, #9F6B7D, #609BA6, #9F6B7D);
+  background-repeat: none;
+  background-size: cover;
+  background-position: bottom;
+  background-blend-mode: darken;
+  filter: opacity(75%);
+  box-shadow: 0px 4px 61px 10px rgba(0,0,0,0.6);
+}
+
+.recent {
+  box-shadow: 0px 1px 30px 1px #00000052;
 }
 
 #cityname {
-  font-family: "Sofia Sans Condensed", sans-serif;
+  font-family: 'Ysabeau Office', sans-serif;
   background: #4c5052;
   background: linear-gradient(to right, #414345, #4c5052);
-  color: #fdb094;
+  color: #ffffffbd;
   border: none;
   outline: none;
 }
@@ -47,6 +65,7 @@ p {
   background-repeat: none;
   background-size: cover;
   background-blend-mode: exclusion;
+  box-shadow: 0px 1px 30px 1px #00000052;
 }
 
 .frost {
@@ -54,6 +73,11 @@ p {
   background-color: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
 }
+
+#weather-board {
+  box-shadow: 0px 1px 30px 1px #00000052;
+}
+
 #all-weather {
   background-image: url(./assets/weather-bg.png),
     linear-gradient(to right, #29323c, #485563);
@@ -65,6 +89,7 @@ p {
 #weather-container {
   margin: 20px;
   font-size: 140%;
+  box-shadow: 0px 1px 30px 1px #00000052;
 }
 
 .five-day {
@@ -73,6 +98,7 @@ p {
   background-color: rgba(255, 255, 255, 0.15);
   background-color: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
+  box-shadow: 0px 1px 30px 1px #00000052;
 }
 
 .historyBtn {

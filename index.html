@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Agdasima:wght@700&family=Genos:wght@500&family=Sofia+Sans+Condensed:wght@300&family=Ysabeau+SC:wght@300&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@300&family=Ysabeau+Infant:wght@300&family=Ysabeau+Office&family=Ysabeau+SC:wght@300&display=swap"
       rel="stylesheet"
     />
 
@@ -26,17 +26,17 @@
 
   <body>
     <header
-      class="custom-bg p-3 rounded-bottom border-3 border-bottom border-light text-center"
+      class="custom-bg p-3 rounded-bottom text-center"
     >
       <h1 class="mb-3">Weather Dashboard</h1>
-      <p class="subheader bg-dark rounded-pill">
+      <p class="subheader frost">
         Todays Date: <span id="currentDate"></span>
       </p>
     </header>
 
     <main class="container my-5">
-      <div class="row">
-        <div id="search-style" class="mx-3 col-3 d-block rounded">
+      <div class="row d-flex justify-content-between">
+        <div id="search-style" class="my-3 col-lg-3 col-md-11 d-block rounded">
           <form class="frost my-3 p-3 rounded">
             <h3 class="my-3 w-100 border-bottom border-2 border-light">
               Search for City:
@@ -55,7 +55,7 @@
             />
             <input id="clearBtn" class="my-3 btn" type="button" value="Clear" />
           </form>
-          <div class="frost my-3 p-3 rounded">
+          <div class="recent frost my-3 p-3 rounded">
             <h3 class="my-3 w-100 border-bottom border-2 border-light">
               Recent Searches:
             </h3>
@@ -65,14 +65,14 @@
           </div>
         </div>
 
-        <aside id="all-weather" class="col-8 rounded">
+        <aside id="all-weather" class="col-lg-8 col-md-11 my-3 rounded">
           <div id="weather-container" class="frost w-90 p-4 mb-4 rounded">
             <!-- JavaScript Appended City's Current Weather Goes Here -->
           </div>
 
           <h3
             id="weather-board"
-            class="custom-bg my-2 py-1 px-5 rounded-pill w-100"
+            class="my-2 py-1 px-5 w-100"
           ></h3>
 
           <div
