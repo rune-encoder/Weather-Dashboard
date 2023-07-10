@@ -179,7 +179,7 @@ function getWeather(lat, lon) {
       weatherBoard.textContent = "5-Day Forecast: ";
 
       // Goes through and creates 5 cards for our Forecast.
-      for (var i = 6; i <= 40; i += 8) {
+      for (var i = 4; i <= 40; i += 8) {
         // Forecast Raw Date (Needs to be Formatted).
         var forecastDateRaw = data.list[i].dt_txt;
         // Formatted Forecast Date.
