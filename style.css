@@ -1,21 +1,18 @@
 body {
   color: whitesmoke;
-  background: #7F7FD5;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #609BA6, #9F6B7D, #609BA6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #609BA6;  
+  background: linear-gradient(to right, #609BA6, #9F6B7D, #609BA6); 
   
 }
 
 h1,
 h5 {
   font-family: "Ysabeau SC", sans-serif;
-
 }
 
 h2,
 h3 {
   font-family: 'Ysabeau Infant', sans-serif;
-
 }
 
 p {
